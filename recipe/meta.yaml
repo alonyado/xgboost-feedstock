@@ -73,6 +73,8 @@ outputs:
         - __cuda                                                    # [cuda_compiler_version != "None"]
         - {{ pin_compatible("cuda-version", min_pin="x") }}         # [cuda_compiler_version != "None"]
         - vcomp14                                                   # [win]
+      run_exports:
+        - {{ pin_subpackage("libxgboost", exact=True) }}
     test:
       commands:
         - test -f "${PREFIX}/lib/libxgboost${SHLIB_EXT}"                  # [unix]
